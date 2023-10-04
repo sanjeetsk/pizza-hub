@@ -1,12 +1,19 @@
+import { useDispatch } from "react-redux"
 import Dish from "./Dishes"
+import { useEffect } from "react";
+import { filterProducts } from "../../../store/slices/productSlice";
 
 const DishList = ({dishes, category}) => {
-    const filterDish = category === 'All' ? dishes : dishes.filter((dish) =>( dish.category === category) );
+    const dispatch = useDispatch();
 
+    useEffect(()=>{
+        dispatch(filterProducts(category))
+    }, [category])
+    
     return(
         <div className="dish-list">
             {
-                filterDish.map((dish) => (
+                dishes.products.map((dish) => (
                     <Dish key={dish.id} dish={dish} />
                 ))
             }

@@ -1,7 +1,4 @@
-#main {
-    background: rgb(238, 174, 202);
-    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
-}
+
 
 .category-filter {
     display: flex;
@@ -26,7 +23,8 @@ button {
 }
 
 .active {
-    background-color: greenyellow;
+    color: #000;
+    font-weight: 700\;
 }
 
 .dish-list {

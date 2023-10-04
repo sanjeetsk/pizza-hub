@@ -18,8 +18,12 @@
 }
 
 .link{
-    opacity: 0.8;
+    font-size: 1.1rem;
+    font-weight: 500;
+    /* opacity: 0.8; */
+    color: #fff;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .link:hover{

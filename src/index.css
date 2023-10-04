@@ -1,24 +1,88 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-:root{
+
+:root {
   --theme: #2398a5;
   --black: #000;
   --white: #fff;
   --shadow: 0px 0px 30px 8px rgba(227, 227, 227, 0.75);
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body{
-    font-family: 'Montserrat', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-smoothing: grayscale;
-  }
-  
-  input{
-    font-family: 'Montserrat', sans-serif;
-  }
-  
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-smoothing: grayscale;
+}
+
+input {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.App {
+  background: rgb(238, 174, 202);
+  background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+}
+
+
+/* styling for signUp-login */
+
+.signup-wrapper {
+  width: 70%;
+  max-width: 400px;
+  height: auto;
+  box-shadow: var(--shadow);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.p-login {
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+input {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* for input fields */
+.custom-input {
+  border-width: 0;
+  border-bottom-width: 1px;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.8;
+  border-radius: 6px;
+}
+
+.custom-input:focus {
+  outline: none;
+  opacity: 1;
+  transition: all 0.2sec;
+}
+
+.custom-input::placeholder {
+  color: gray;
+}

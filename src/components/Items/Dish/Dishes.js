@@ -1,12 +1,42 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart, removeFromCart } from "../../../store/actions/cartActions";
+import { toast } from "react-toastify";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../firebase";
 
 const Dish = ({ dish }) => {
-    const { title, sizes, img, desc } = dish;
+    const [user] = useAuthState(auth);
+    const dispatch = useDispatch();
+
+    const { id, title, sizes, img, desc } = dish;
 
     const [selectedSize, setSelectedSize] = useState('S');
 
     const handleSizeChange = (event) => {
         setSelectedSize(event.target.value);
+    }
+
+    const handleAddCart = () => {
+        if(user){
+            console.log(id)
+            toast.success("Added to Cart");
+            dispatch(addToCart(user.uid, id));
+        }
+        else{
+            toast.error("Please Login!");
+        }
+    }
+
+    const handleRemoveCart = () => {
+        if(user){
+            console.log(id);
+            toast.success("Removed From Cart");
+            dispatch(removeFromCart(user.uid, id));
+        }
+        else{
+            toast.error("Please Login!");
+        }
     }
 
     return (
@@ -35,7 +65,12 @@ const Dish = ({ dish }) => {
                     <span className="price">₹ {sizes[selectedSize]}</span>
                 </div>
             </div>
-            <button className="addCart">Add to Cart</button>
+            {
+                dish.isInCart === true ?
+                <button className="addCart" onClick={handleRemoveCart}>Remove From Cart</button>
+                :
+                <button className="addCart" onClick={handleAddCart}>Add to Cart</button>
+            }
         </div>
     );
 }
