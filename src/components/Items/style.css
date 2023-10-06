@@ -39,8 +39,8 @@ button {
     background-color: #f5f5f5;
     border: 1px solid #ddd;
     border-radius: 10px;
-    margin: 20px;
-    padding: 20px;
+    margin: 10px;
+    padding: 10px;
     width: 300px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -57,7 +57,7 @@ button {
 /* Title styles */
 .title h2 {
     color: #333;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 /* Description styles */

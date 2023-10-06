@@ -12,9 +12,6 @@ const CartSlice = createSlice({
     },
     reducers: {
         cartFetched: (state, {payload}) => {
-            console.log(
-                'payload',payload
-            )
             return{
                 ...state,
                 isInCart: true,
@@ -24,7 +21,6 @@ const CartSlice = createSlice({
         },
 
         cartError: (state, {payload}) => {
-            console.log('here')
             return{
                 ...state,
                 isInCart: false,
