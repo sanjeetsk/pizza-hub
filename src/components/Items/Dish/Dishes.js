@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebase";
 
-const Dish = ({ dish }) => {
+const Dish = ({ dish, isInCart }) => {
     const [user] = useAuthState(auth);
     const dispatch = useDispatch();
 
@@ -39,6 +39,8 @@ const Dish = ({ dish }) => {
         }
     }
 
+    // console.log("cart", isInCart);
+
     return (
         <div className="dish">
             <img src={img} alt={title} className="dish-image" />
@@ -66,7 +68,7 @@ const Dish = ({ dish }) => {
                 </div>
             </div>
             {
-                dish.isInCart === true ?
+                isInCart == true ?
                 <button className="addCart" onClick={handleRemoveCart}>Remove From Cart</button>
                 :
                 <button className="addCart" onClick={handleAddCart}>Add to Cart</button>

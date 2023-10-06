@@ -3,31 +3,31 @@ import { createSlice } from "@reduxjs/toolkit";
 const CartSlice = createSlice({
     name: "cart",
     initialState: {
-        loading: false,
+        cartItems: [],
+        cartItem: {},
+        message: "Cart is Empty!",
         products: [],
-        error: null,
+        isInCart: false,
+        error: "",
     },
     reducers: {
-        fetchCart: (state) =>{
-            return {
-                ...state,
-                loading: true,
-                error: null,
-                products: [],
-            };
-        },
         cartFetched: (state, {payload}) => {
+            console.log(
+                'payload',payload
+            )
             return{
                 ...state,
-                loading: false,
-                error: null,
+                isInCart: true,
+                // products: [...state.products,...payload],
                 products: payload,
             };
         },
+
         cartError: (state, {payload}) => {
+            console.log('here')
             return{
                 ...state,
-                loading: false,
+                isInCart: false,
                 products: [],
                 error: payload,
             };
@@ -35,6 +35,6 @@ const CartSlice = createSlice({
     },
 });
 
-export const {fetchCart, cartFetched, cartError} = CartSlice.actions;
+export const {cartFetched, cartError} = CartSlice.actions;
 
 export default CartSlice.reducer;

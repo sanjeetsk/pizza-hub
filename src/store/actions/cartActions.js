@@ -19,22 +19,25 @@ export const fetchCart = (userId) => async (dispatch) =>{
     try{
         const q = query(collection(db, `users/${userId}/cart`));
         const querySnapshot = await getDocs(q);
+        console.log("query", querySnapshot?.docs[0]?.data());
         let dataArray = [];
         querySnapshot.forEach((doc) => {
-            dataArray.push(doc.data.item);
+            dataArray.push(doc.data().item);
         });
+        console.log('data array', dataArray)
         dispatch(cartFetched(dataArray));
     }
     catch(e){
-        cartError(e.message);
+        dispatch(cartError(e.message));
     }
 }
 
 export const removeFromCart = (userId, id) => async(dispatch) => {
     try{
-        const ref = collection(db, "cart");
-        const q = query(ref, where("user", "==", userId), where("item", "==", id));
+        const ref = collection(db, `users/${userId}/cart`);
+        const q = query(ref, where("item", "==", id));
         const querySnapshot = await getDocs(q);
+        console.log("removeCartQuery", querySnapshot?.docs[0]?.data());
 
         querySnapshot.forEach(async (doc) => {
             await deleteDoc(doc.ref);
