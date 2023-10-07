@@ -19,7 +19,7 @@ const Dish = ({ dish, isInCart }) => {
 
     const handleAddCart = () => {
         if(user){
-            console.log(id)
+            // console.log(id)
             toast.success("Added to Cart");
             dispatch(addToCart(user.uid, id));
         }
@@ -30,7 +30,7 @@ const Dish = ({ dish, isInCart }) => {
 
     const handleRemoveCart = () => {
         if(user){
-            console.log(id);
+            // console.log(id);
             toast.success("Removed From Cart");
             dispatch(removeFromCart(user.uid, id));
         }
