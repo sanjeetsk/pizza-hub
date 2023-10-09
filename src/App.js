@@ -14,7 +14,9 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <Header />
-        <ToastContainer />
+        <ToastContainer 
+          autoClose={800}  
+        />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='login' element={<SignUpLogin />} />

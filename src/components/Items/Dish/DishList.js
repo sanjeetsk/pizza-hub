@@ -9,6 +9,8 @@ const DishList = ({dishes, category}) => {
     useEffect(()=>{
         dispatch(filterProducts(category))
     }, [category])
+
+    
     
     return(
         <div className="dish-list">

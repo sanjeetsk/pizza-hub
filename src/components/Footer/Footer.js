@@ -16,7 +16,7 @@ function Footer() {
         </div>
         <div className='author'>
             <p>Copyright © 2023 THE PIZZA HUB</p>
-            <p>Designed and Developed by @Sanjeet</p>
+            {/* <p>Designed and Developed by @Sanjeet</p> */}
         </div>
     </div>
   )

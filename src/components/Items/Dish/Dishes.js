@@ -9,19 +9,35 @@ const Dish = ({ dish, isInCart }) => {
     const [user] = useAuthState(auth);
     const dispatch = useDispatch();
 
-    const { id, title, sizes, img, desc } = dish;
+    const { id, title, sizes, img, desc, category} = dish;
 
     const [selectedSize, setSelectedSize] = useState('S');
+    const [price, setPrice] = useState(sizes[0].Price);
 
     const handleSizeChange = (event) => {
-        setSelectedSize(event.target.value);
+        const newSize= event.target.value;
+        setSelectedSize(newSize);
+        // Find the corresponding price based on the selected size
+        const newSizePrice = sizes.find((size) => size.Size === newSize)?.Price;
+        if (newSizePrice) {
+            setPrice(newSizePrice);
+        }
     }
 
     const handleAddCart = () => {
         if(user){
             // console.log(id)
+            const selectedPizza = {
+                id: id,
+                title: title,
+                category: category,
+                img: img,
+                desc: desc,
+                size: selectedSize,
+                price: price,
+            };
             toast.success("Added to Cart");
-            dispatch(addToCart(user.uid, id));
+            dispatch(addToCart(user.uid, selectedPizza));
         }
         else{
             toast.error("Please Login!");
@@ -56,15 +72,20 @@ const Dish = ({ dish, isInCart }) => {
                     <label htmlFor="size" className="size-label">Select Size:</label>
                     <select id="size" value={selectedSize} onChange={handleSizeChange} className="size-select">
                         {
-                            Object.keys(sizes).map((size) => (
-                                <option key={size} value={size}>
-                                    {size}
+                            // Object.keys(sizes).map((size) => (
+                            //     <option key={size} value={size}>
+                            //         {size}
+                            //     </option>
+                            // ))
+                            sizes.map((sizeOption) => (
+                                <option key={sizeOption.Size} value={sizeOption.Size}>
+                                    {sizeOption.Size}
                                 </option>
                             ))
                         }
 
                     </select>
-                    <span className="price">₹ {sizes[selectedSize]}</span>
+                    <span className="price">₹ {price}</span>
                 </div>
             </div>
             {
